@@ -1,0 +1,354 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Vishal Singh • DevOps & Cloud</title>
+  <meta name="description" content="Vishal Singh – DevOps & Cloud learner. Docker • AWS • Linux. Portfolio with projects, experience, skills and contact." />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    :root{
+      --bg-grad-1:#f0f9ff; /* sky-50 */
+      --bg-grad-2:#fff; 
+      --ink:#0b1220;      /* zinc-950 */
+      --muted:#475569;    /* slate-600 */
+      --card:#ffffffcc;   /* glass */
+      --border:#e2e8f0;   /* slate-200 */
+      --brand:#0ea5e9;    /* sky-500 */
+      --brand-2:#a855f7;  /* violet-500 */
+      --ring:rgba(14,165,233,.25);
+    }
+    *{box-sizing:border-box}
+    html,body{margin:0;padding:0;font-family:Inter,system-ui,Segoe UI,Roboto,Helvetica,Arial,sans-serif;color:var(--ink);scroll-behavior:smooth}
+    body{background:linear-gradient(180deg,var(--bg-grad-2),var(--bg-grad-1));}
+
+    /* Decorative blobs */
+    .blob{position:fixed;z-index:-1;filter:blur(60px);opacity:.35;pointer-events:none}
+    .blob.b1{top:-80px;left:-80px;width:420px;height:420px;background:radial-gradient(circle at 30% 30%,#38bdf8,transparent 60%),radial-gradient(circle at 70% 70%,#a78bfa,transparent 55%)}
+    .blob.b2{bottom:-120px;right:-100px;width:480px;height:480px;background:radial-gradient(circle at 40% 40%,#fca5a5,transparent 55%),radial-gradient(circle at 60% 60%,#fde68a,transparent 60%)}
+
+    /* Layout */
+    .container{max-width:1100px;margin:0 auto;padding:0 18px}
+    nav{position:sticky;top:0;background:rgba(255,255,255,.7);backdrop-filter:blur(10px);border-bottom:1px solid var(--border);z-index:10}
+    .nav-inner{display:flex;align-items:center;justify-content:space-between;padding:12px 0}
+    .brand{display:flex;align-items:center;gap:10px;font-weight:700}
+    .brand-badge{display:grid;place-items:center;width:34px;height:34px;border-radius:50%;background:linear-gradient(135deg,var(--brand),var(--brand-2));color:#fff}
+    .nav-links a{margin:0 10px;text-decoration:none;color:#0f172a;font-weight:500}
+    .nav-links a:hover{text-decoration:underline}
+
+    header.hero{padding:54px 0 18px}
+    .grid{display:grid;gap:26px}
+    @media(min-width:900px){.grid.two{grid-template-columns:1.1fr .9fr}}
+
+    h1{font-size:40px;line-height:1.15;margin:0}
+    @media(min-width:640px){h1{font-size:52px}}
+    .sub{margin-top:12px;color:var(--muted)}
+    .btns{display:flex;flex-wrap:wrap;gap:12px;margin-top:18px}
+    .btn{padding:10px 14px;border-radius:12px;border:1px solid var(--border);text-decoration:none;color:inherit;display:inline-flex;align-items:center;gap:8px}
+    .btn.primary{background:linear-gradient(135deg,var(--brand),var(--brand-2));color:#fff;border:none}
+    .btn:focus{outline:3px solid var(--ring)}
+
+    /* Cards */
+    .card{background:var(--card);border:1px solid var(--border);border-radius:16px;padding:18px;box-shadow:0 10px 30px rgba(2,8,23,.05)}
+
+    /* Chips */
+    .chips{display:flex;flex-wrap:wrap;gap:10px}
+    .chip{border:1px solid var(--border);padding:8px 12px;border-radius:999px;background:#fffafcaa}
+
+    section{padding:28px 0}
+    .section-title{font-size:24px;margin:0 0 8px}
+    .muted{color:var(--muted);font-size:14px}
+
+    /* Projects */
+    .proj-grid{display:grid;gap:18px}
+    @media(min-width:900px){.proj-grid{grid-template-columns:repeat(3,1fr)}}
+    .proj h3{margin:0 0 6px}
+    .badge{font-size:12px;border:1px solid #bae6fd;color:#0369a1;background:#e0f2fe;border-radius:999px;padding:3px 8px}
+    .proj ul{margin:8px 0 0;padding-left:18px}
+
+    /* Footer */
+    footer{padding:30px 0 50px;text-align:center;color:var(--muted)}
+
+    /* Simple motion */
+    .float{animation:float 6s ease-in-out infinite}
+    .float2{animation:float 7.5s ease-in-out infinite}
+    @keyframes float{0%{transform:translateY(0)}50%{transform:translateY(-10px)}100%{transform:translateY(0)}}
+    .fade-up{opacity:0;transform:translateY(12px);transition:all .6s ease}
+    .fade-up.show{opacity:1;transform:translateY(0)}
+    .rotate-hero{display:inline-block;background:linear-gradient(90deg,var(--brand),var(--brand-2));-webkit-background-clip:text;background-clip:text;color:transparent}
+
+    /* Links block */
+    .links a{display:inline-flex;align-items:center;gap:8px;margin-right:14px}
+
+    /* Robot sticker */
+    .sticker{position:absolute;filter:drop-shadow(0 12px 20px rgba(2,8,23,.12))}
+    .sticker.s1{top:-16px;left:-10px;width:140px}
+    .sticker.s2{top:40px;right:0;width:130px}
+
+    /* Small helpers */
+    .sr-only{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);border:0}
+  </style>
+</head>
+<body>
+  <div class="blob b1"></div>
+  <div class="blob b2"></div>
+
+  <nav>
+    <div class="container nav-inner">
+      <div class="brand"><span class="brand-badge">V</span> Vishal Singh</div>
+      <div class="nav-links">
+        <a href="#skills">Skills</a>
+        <a href="#projects">Projects</a>
+        <a href="#experience">Experience</a>
+        <a href="#education">Education</a>
+        <a href="#certs">Certifications</a>
+        <a href="#contact">Contact</a>
+      </div>
+    </div>
+  </nav>
+
+  <header class="hero">
+    <div class="container grid two">
+      <div>
+        <h1>
+          Hey, I’m Vishal — <span class="rotate-hero" id="rotating">DevOps & Cloud Learner</span>
+        </h1>
+       <p class="sub">Final‑year ECE student passionate about crafting innovative, reliable solutions — from Dockerized cloud deployments to IoT systems and intelligent software apps — with a flair for efficiency and creative problem‑solving.</p>
+        <div class="btns">
+          <a href="#projects" class="btn primary">🚀 See Projects</a>
+          <a href="#contact" class="btn">✉️ Contact</a>
+        </div>
+        <div class="card" style="margin-top:16px">
+          <strong>Currently learning:</strong>
+          <div class="chips" style="margin-top:10px">
+            <span class="chip">Docker</span>
+            <span class="chip">AWS (EC2, S3, IAM, Lambda)</span>
+            <span class="chip">Linux</span>
+            <span class="chip">Git & CI/CD</span>
+          </div>
+        </div>
+      </div>
+
+      <div style="position:relative;min-height:240px">
+        <!-- Cute AI-ish robot stickers (SVG, no external files) -->
+        <div class="sticker s1 float">
+          <svg viewBox="0 0 160 160" xmlns="http://www.w3.org/2000/svg" aria-hidden>
+            <defs>
+              <linearGradient id="g1" x1="0" y1="0" x2="1" y2="1">
+                <stop offset="0%" stop-color="#9EE7F8" />
+                <stop offset="100%" stop-color="#C4B5FD" />
+              </linearGradient>
+              <linearGradient id="g2" x1="0" y1="0" x2="1" y2="1">
+                <stop offset="0%" stop-color="#FDE68A" />
+                <stop offset="100%" stop-color="#FCA5A5" />
+              </linearGradient>
+            </defs>
+            <rect x="6" y="6" width="148" height="148" rx="24" fill="#fff" />
+            <rect x="6" y="6" width="148" height="148" rx="24" fill="url(#g1)" opacity=".35" />
+            <rect x="6" y="6" width="148" height="148" rx="24" stroke="#0ea5e9" stroke-width="3" fill="none" />
+            <circle cx="80" cy="26" r="10" fill="url(#g2)" stroke="#0ea5e9" stroke-width="3" />
+            <rect x="76" y="36" width="8" height="14" rx="4" fill="#0ea5e9" />
+            <rect x="42" y="52" width="76" height="48" rx="14" fill="#fff" stroke="#0ea5e9" stroke-width="3" />
+            <circle cx="64" cy="76" r="8" fill="#0ea5e9" />
+            <circle cx="96" cy="76" r="8" fill="#0ea5e9" />
+            <rect x="70" y="92" width="20" height="6" rx="3" fill="#0ea5e9" opacity=".7" />
+            <rect x="36" y="106" width="88" height="32" rx="12" fill="#fff" stroke="#0ea5e9" stroke-width="3" />
+            <rect x="46" y="114" width="68" height="8" rx="4" fill="#0ea5e9" opacity=".2" />
+          </svg>
+        </div>
+        <div class="sticker s2 float2">
+          <svg viewBox="0 0 160 160" xmlns="http://www.w3.org/2000/svg" aria-hidden>
+            <defs>
+              <linearGradient id="g1b" x1="0" y1="0" x2="1" y2="1">
+                <stop offset="0%" stop-color="#C7F9CC" />
+                <stop offset="100%" stop-color="#A0C4FF" />
+              </linearGradient>
+            </defs>
+            <rect x="6" y="6" width="148" height="148" rx="24" fill="#fff" />
+            <rect x="6" y="6" width="148" height="148" rx="24" fill="url(#g1b)" opacity=".35" />
+            <rect x="6" y="6" width="148" height="148" rx="24" stroke="#0ea5e9" stroke-width="3" fill="none" />
+            <circle cx="80" cy="26" r="10" fill="#fde68a" stroke="#0ea5e9" stroke-width="3" />
+            <rect x="76" y="36" width="8" height="14" rx="4" fill="#0ea5e9" />
+            <rect x="42" y="52" width="76" height="48" rx="14" fill="#fff" stroke="#0ea5e9" stroke-width="3" />
+            <circle cx="64" cy="76" r="8" fill="#0ea5e9" />
+            <!-- wink -->
+            <rect x="92" y="73" width="16" height="6" rx="3" fill="#0ea5e9" />
+            <rect x="70" y="92" width="20" height="6" rx="3" fill="#0ea5e9" opacity=".7" />
+            <rect x="36" y="106" width="88" height="32" rx="12" fill="#fff" stroke="#0ea5e9" stroke-width="3" />
+            <rect x="46" y="114" width="68" height="8" rx="4" fill="#0ea5e9" opacity=".2" />
+          </svg>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <section id="skills">
+      <div class="container">
+        <h2 class="section-title">Skills</h2>
+        <p class="muted">Comfortable with these tools and concepts</p>
+        <div class="card fade-up" data-obs>
+          <div class="chips">
+            <span class="chip">C</span>
+            <span class="chip">C++</span>
+            <span class="chip">Python</span>
+            <span class="chip">SQL</span>
+            <span class="chip">AWS: EC2 • S3 • IAM • Lambda • EBS</span>
+            <span class="chip">Linux</span>
+            <span class="chip">Docker & Containerization</span>
+            <span class="chip">Git/GitHub</span>
+            <span class="chip">HTML • CSS • JavaScript • Bootstrap • jQuery (basic)</span>
+            <span class="chip">Excel • PowerPoint • Canva • Premiere Pro</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="projects">
+      <div class="container">
+        <h2 class="section-title">Projects</h2>
+        <p class="muted">Small, focused builds that demonstrate deployment skills</p>
+        <div class="proj-grid">
+          <article class="card proj fade-up" data-obs>
+            <div style="display:flex;justify-content:space-between;align-items:center;gap:8px">
+              <h3>Dockerized Portfolio</h3>
+              <span class="badge">DevOps</span>
+            </div>
+            <p>Static portfolio served by Nginx in a Docker container. Deployed on AWS EC2 for demos; instance terminated to avoid cost.</p>
+            <ul>
+              <li>Nginx base image</li>
+              <li>Image pushed to Docker Hub</li>
+              <li>One‑command deploy on EC2</li>
+            </ul>
+            <p class="links" style="margin-top:8px">
+              <a id="demoLink" href="#">Live Demo</a>
+              <a id="repoLink" href="#">GitHub</a>
+            </p>
+          </article>
+
+          <article class="card proj fade-up" data-obs>
+            <div style="display:flex;justify-content:space-between;align-items:center;gap:8px">
+              <h3>Pronunciation Assistant</h3>
+              <span class="badge">Software</span>
+            </div>
+            <p>Python GUI app leveraging NLP to detect and correct pronunciation errors; integrated Wav2Vec2.0. Added real‑time object detection using YOLOv5 for interactive feedback.</p>
+            <ul>
+              <li>~70% initial accuracy, improved with Wav2Vec2.0</li>
+              <li>YOLOv5 object detection (~80% on use‑case)</li>
+            </ul>
+            <p class="links" style="margin-top:8px">
+              <a href="https://github.com/Vishallls/Pronunciation-Assistant" target="_blank" rel="noreferrer">GitHub Repo</a>
+            </p>
+          </article>
+
+          <article class="card proj fade-up" data-obs>
+            <div style="display:flex;justify-content:space-between;align-items:center;gap:8px">
+              <h3>Soldier Health Monitoring & Position Tracking</h3>
+              <span class="badge">IoT</span>
+            </div>
+            <p>Real‑time IoT system (ESP32 + Arduino + LM35 + NEO‑6M) for health and GPS tracking; Blynk app used for wireless telemetry.</p>
+            <ul>
+              <li>~85% GPS accuracy in tests</li>
+              <li>&lt; 3s latency within ~50m range</li>
+            </ul>
+            <p class="links" style="margin-top:8px">
+              <a href="https://github.com/Vishallls/Soldier-Heathcare-and-Position-tracking-system" target="_blank" rel="noreferrer">GitHub Repo</a>
+            </p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section id="experience">
+      <div class="container">
+        <h2 class="section-title">Experience</h2>
+        <article class="card fade-up" data-obs>
+          <h3>NHPC Ltd. — IT Communication Department (Intern)</h3>
+          <p class="muted">May 2025 – July 2025 • Corporate Office</p>
+          <ul>
+            <li>Assisted Networking Cell with enterprise infrastructure: switches, routers, structured cabling.</li>
+            <li>Hands‑on with LAN/WAN, IP addressing, network security, Cisco‑based tools.</li>
+            <li>Contributed to documentation and auditing of IT assets and network diagrams.</li>
+          </ul>
+        </article>
+      </div>
+    </section>
+
+    <section id="education">
+      <div class="container">
+        <h2 class="section-title">Education</h2>
+        <article class="card fade-up" data-obs>
+          <h3>Jaypee Institute of Information Technology</h3>
+          <p class="muted">B.Tech — Electronics & Communication Engineering • Oct 2022 – May 2026</p>
+          <ul>
+            <li>CGPA: 6.8/10</li>
+            <li>GATE Qualified in 3rd year — Score: 350</li>
+          </ul>
+        </article>
+      </div>
+    </section>
+
+    <section id="certs">
+      <div class="container">
+        <h2 class="section-title">Certifications</h2>
+        <div class="proj-grid">
+          <article class="card fade-up" data-obs>
+            <h3>Microsoft Azure Fundamentals</h3>
+            <p class="links" style="margin-top:8px">
+              <a href="https://learn.microsoft.com/api/credentials/share/en-us/VishalSingh-8196/7F130531874BB5E9?sharingId=3FFF4E349D68E174" target="_blank" rel="noreferrer">View Credential</a>
+            </p>
+          </article>
+          <article class="card fade-up" data-obs>
+            <h3>CDAC Cloud Bootcamp</h3>
+            <p class="links" style="margin-top:8px">
+              <a href="https://drive.google.com/file/d/1kYZwXWVvQU58TrgqMuXRZJPTVDWjBp9l/view?usp=drive_link" target="_blank" rel="noreferrer">Certificate</a>
+            </p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+   <section id="contact">
+  <div class="container">
+    <h2 class="section-title">Contact</h2>
+    <div class="card fade-up" data-obs>
+      <p>Let’s connect for roles in DevOps/Cloud or software internships/full-time.</p>
+      <p class="links" style="margin-top:8px">
+        <a href="mailto:vishalsinghb26@gmail.com">📧 vishalsinghb26@gmail.com</a>
+        <a href="tel:+917014226689">📞 +91 70142 26689</a>
+        <a href="https://www.linkedin.com/in/vishal-singh-8aa76b249/" target="_blank" rel="noreferrer">🔗 LinkedIn</a>
+        <a href="https://github.com/Vishallls" target="_blank" rel="noreferrer">💻 GitHub</a>
+        <a href="resume.pdf" download>📄 Download Resume (PDF)</a>
+      </p>
+    </div>
+  </div>
+</section>
+  </main>
+
+  <footer>
+    <div class="container">© <span id="yr"></span> Vishal Singh • Built with HTML/CSS/JS • Deployed with Docker + Nginx</div>
+  </footer>
+
+  <script>
+    // Rotating hero text
+    const words = ["DevOps & Cloud Learner","Docker • AWS • Linux","Open to Internships/FT"];
+    let i = 0; const rot = document.getElementById('rotating');
+    setInterval(()=>{ i=(i+1)%words.length; rot.textContent = words[i]; }, 1600);
+
+    // IntersectionObserver for fade-up animations
+    const obs = new IntersectionObserver((entries)=>{
+      entries.forEach(e=>{ if(e.isIntersecting){ e.target.classList.add('show'); obs.unobserve(e.target); } });
+    },{threshold:0.12});
+    document.querySelectorAll('[data-obs]').forEach(el=>obs.observe(el));
+
+    // Set year
+    document.getElementById('yr').textContent = new Date().getFullYear();
+
+    // Optional: set your project links here once ready
+    document.getElementById('demoLink').href = '#'; // replace with temporary EC2 URL when live
+    document.getElementById('repoLink').href = 'https://github.com/Vishallls'; // update to specific repo
+  </script>
+</body>
+</html>
